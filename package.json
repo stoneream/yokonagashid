@@ -1,0 +1,29 @@
+{
+  "name": "yokonagashid",
+  "version": "1.0.0",
+  "description": "yokonagashi daemon",
+  "homepage": "https://github.com/stoneream/yokonagashid#readme",
+  "bugs": {
+    "url": "https://github.com/stoneream/yokonagashid/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/stoneream/yokonagashid.git"
+  },
+  "license": "Apache-2.0",
+  "author": "Ishikawa Ryuto",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.0"
+  },
+  "dependencies": {
+    "discord.js": "^14.25.1"
+  }
+}
