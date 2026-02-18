@@ -1,0 +1,11 @@
+# Discord bot token
+export bot_token="YOUR_DISCORD_BOT_TOKEN"
+
+# Comma-separated webhook URLs
+export webhook_urls="https://example.com/webhook/one,https://example.com/webhook/two"
+
+# Webhook request timeout in milliseconds (positive integer)
+export WEBHOOK_TIMEOUT_MS="10000"
+
+# Max concurrent webhook requests per batch (positive integer)
+export WEBHOOK_MAX_CONCURRENCY="4"
