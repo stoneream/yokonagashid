@@ -12,8 +12,16 @@ n8nのWebhookトリガーにDiscordのメッセージを流し込むためのボ
 
 `.envrc.example` を参照。
 
+## Docker
+
+### イメージのビルド
+
+```bash
+docker build -t yokonagashid:latest .
+```
+
 ## features
 
 - Dependabotによる依存関係の自動更新
 - GitHub ActionsによるCI/CD
-- Dockerイメージのビルドと公開
+- Dockerイメージの公開
