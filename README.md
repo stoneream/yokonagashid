@@ -11,7 +11,7 @@ Discordのメッセージを指定したWebhookに転送するボット
 
 ## 設定
 
-`.envrc.example` を参照。
+`.envrc.example` を参照
 
 ## Docker
 
@@ -19,6 +19,26 @@ Discordのメッセージを指定したWebhookに転送するボット
 
 ```bash
 docker build -t yokonagashid:latest .
+```
+
+### Docker Compose 運用例
+
+`docker compose` を使う場合は `.env.example` を `.env` にコピーして値を設定。
+
+```yml
+services:
+  yokonagashid:
+    image: ghcr.io/stoneream/yokonagashid:latest
+    pull_policy: always
+    restart: unless-stopped
+    init: true
+    env_file:
+      - .env
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
 ```
 
 ## features
