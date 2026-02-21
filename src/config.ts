@@ -23,14 +23,14 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {
     details.push("Environment variable 'BOT_TOKEN' is required.");
   }
 
-  const rawWebhookUrls = env.webhook_urls?.split(",") ?? [];
+  const rawWebhookUrls = env.WEBHOOK_URLS?.split(",") ?? [];
   const webhookUrls = rawWebhookUrls
     .map((url) => url.trim())
     .filter((url) => url.length > 0);
 
   if (webhookUrls.length === 0) {
     details.push(
-      "Environment variable 'webhook_urls' must include at least one URL.",
+      "Environment variable 'WEBHOOK_URLS' must include at least one URL.",
     );
   }
 
