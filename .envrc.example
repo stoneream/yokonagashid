@@ -2,7 +2,7 @@
 export BOT_TOKEN="YOUR_DISCORD_BOT_TOKEN"
 
 # Comma-separated webhook URLs
-export webhook_urls="https://example.com/webhook/one,https://example.com/webhook/two"
+export WEBHOOK_URLS="https://example.com/webhook/one,https://example.com/webhook/two"
 
 # Webhook request timeout in milliseconds (positive integer)
 export WEBHOOK_TIMEOUT_MS="10000"
