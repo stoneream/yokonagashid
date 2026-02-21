@@ -40,9 +40,3 @@ services:
         max-size: "10m"
         max-file: "3"
 ```
-
-## features
-
-- Dependabotによる依存関係の自動更新
-- GitHub ActionsによるCI/CD
-- Dockerイメージの公開
