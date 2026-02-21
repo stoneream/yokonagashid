@@ -29,6 +29,20 @@ export function createBot(config: AppConfig, logger: Logger): Client {
       return;
     }
 
+    const content = message.content ?? "";
+    logger.info("Discord message received", {
+      event: "message_received",
+      message_id: message.id,
+      guild_id: message.guildId ?? null,
+      channel_id: message.channelId,
+      author_id: message.author.id,
+      author_tag: message.author.tag,
+      is_direct_message: message.guildId == null,
+      content_length: content.length,
+      content_preview: truncateForLog(content),
+      attachment_count: message.attachments.size,
+    });
+
     if (!message.content?.trim()) {
       return;
     }
@@ -41,7 +55,21 @@ export function createBot(config: AppConfig, logger: Logger): Client {
       timeoutMs: config.webhookTimeoutMs,
       maxConcurrency: config.webhookMaxConcurrency,
     });
+
+    logger.info("Discord message forwarded to webhook targets", {
+      event: "message_forwarded",
+      message_id: message.id,
+      webhook_count: config.webhookUrls.length,
+    });
   });
 
   return client;
+}
+
+function truncateForLog(content: string, maxLength = 200): string {
+  if (content.length <= maxLength) {
+    return content;
+  }
+
+  return `${content.slice(0, maxLength)}...`;
 }

@@ -64,14 +64,14 @@ async function postToWebhook({
       });
     }
   } catch (error) {
-      logger.error("Webhook notification failed", {
-        event: "webhook_notify_failed",
-        source_event: event,
-        webhook_url: maskedWebhookUrl,
-        timeout_ms: timeoutMs,
-        timed_out: isAbortError(error),
-        error,
-      });
+    logger.error("Webhook notification failed", {
+      event: "webhook_notify_failed",
+      source_event: event,
+      webhook_url: maskedWebhookUrl,
+      timeout_ms: timeoutMs,
+      timed_out: isAbortError(error),
+      error: toErrorObject(error),
+    });
   } finally {
     clearTimeout(timeoutId);
   }
@@ -79,6 +79,22 @@ async function postToWebhook({
 
 function isAbortError(error: unknown): boolean {
   return error instanceof Error && error.name === "AbortError";
+}
+
+function toErrorObject(error: unknown): Record<string, string> {
+  if (error instanceof Error) {
+    return {
+      name: error.name,
+      message: error.message,
+      stack: error.stack ?? "",
+    };
+  }
+
+  return {
+    name: "UnknownError",
+    message: String(error),
+    stack: "",
+  };
 }
 
 export function maskWebhookUrls(webhookUrls: string[]): string[] {
