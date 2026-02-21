@@ -1,5 +1,5 @@
 # Discord bot token
-export bot_token="YOUR_DISCORD_BOT_TOKEN"
+export BOT_TOKEN="YOUR_DISCORD_BOT_TOKEN"
 
 # Comma-separated webhook URLs
 export webhook_urls="https://example.com/webhook/one,https://example.com/webhook/two"

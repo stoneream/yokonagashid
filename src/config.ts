@@ -18,9 +18,9 @@ export class ConfigValidationError extends Error {
 export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {
   const details: string[] = [];
 
-  const botToken = env.bot_token?.trim();
+  const botToken = env.BOT_TOKEN?.trim();
   if (!botToken) {
-    details.push("Environment variable 'bot_token' is required.");
+    details.push("Environment variable 'BOT_TOKEN' is required.");
   }
 
   const rawWebhookUrls = env.webhook_urls?.split(",") ?? [];
@@ -29,7 +29,9 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {
     .filter((url) => url.length > 0);
 
   if (webhookUrls.length === 0) {
-    details.push("Environment variable 'webhook_urls' must include at least one URL.");
+    details.push(
+      "Environment variable 'webhook_urls' must include at least one URL.",
+    );
   }
 
   for (const url of webhookUrls) {
