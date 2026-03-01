@@ -40,3 +40,5 @@ services:
         max-size: "10m"
         max-file: "3"
 ```
+
+ref. https://github.com/stoneream/yokonagashid/pkgs/container/yokonagashid
