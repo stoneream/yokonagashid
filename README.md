@@ -50,3 +50,5 @@ services:
     env_file:
       - "{{ yokonagashid_env_file_path }}"
 ```
+
+ref. https://github.com/stoneream/yokonagashid/pkgs/container/yokonagashid
