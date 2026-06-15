@@ -39,4 +39,14 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    read_only: true
+    tmpfs:
+      - /tmp
+    init: {{ yokonagashid_init | ternary('true', 'false') }}
+    env_file:
+      - "{{ yokonagashid_env_file_path }}"
 ```
