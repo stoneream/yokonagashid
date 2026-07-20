@@ -1,12 +1,6 @@
 name: docker-publish
 
 on:
-  pull_request:
-    branches:
-      - main
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 env:
@@ -37,7 +31,6 @@ jobs:
         run: npm run build
 
   docker-publish:
-    if: github.event_name != 'pull_request'
     needs: lint-and-build
     runs-on: ubuntu-latest
     permissions:
