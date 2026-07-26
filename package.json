@@ -24,12 +24,12 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
-    "eslint": "^10.5.0",
+    "eslint": "^10.8.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.61.1"
+    "typescript-eslint": "^8.65.0"
   },
   "dependencies": {
-    "discord.js": "^14.26.4",
+    "discord.js": "^14.27.0",
     "winston": "^3.18.3"
   }
 }
