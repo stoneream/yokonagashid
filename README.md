@@ -13,6 +13,13 @@ Discordのメッセージを指定したWebhookに転送するボット
 
 `.envrc.example` を参照
 
+## Development
+
+```bash
+mise trust
+mise install
+```
+
 ## Docker
 
 ### イメージのビルド
