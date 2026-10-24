@@ -18,6 +18,10 @@ Discordのメッセージを指定したWebhookに転送するボット
 ```bash
 mise trust
 mise install
+
+pnpm install --frozen-lockfile
+pnpm run lint
+pnpm run build
 ```
 
 ## Docker

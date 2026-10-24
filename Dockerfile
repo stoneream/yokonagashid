@@ -1,20 +1,23 @@
-FROM node:26 AS builder
+FROM node:26 AS base
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm ci
+COPY package.json pnpm-lock.yaml ./
+RUN npm install --global "$(node -p 'require("./package.json").packageManager')" \
+    && npm cache clean --force
+
+FROM base AS builder
+RUN pnpm install --frozen-lockfile
 
 COPY tsconfig.json ./
 COPY src ./src
-RUN npm run build
+RUN pnpm run build
 
-FROM node:26 AS runner
-WORKDIR /app
+FROM base AS runner
 
 ENV NODE_ENV=production
 
-COPY package*.json ./
-RUN npm ci --omit=dev && npm cache clean --force
+RUN pnpm install --prod --frozen-lockfile --store-dir /tmp/pnpm-store \
+    && rm -rf /tmp/pnpm-store
 
 COPY --from=builder /app/dist ./dist
 
